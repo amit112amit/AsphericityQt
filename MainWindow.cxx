@@ -13,9 +13,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
     poly1_0->DeepCopy(poly1);
     auto mapper1 = vtkSmartPointer<vtkPolyDataMapper>::New();
     mapper1->SetInputData(poly1);
+    mapper1->ScalarVisibilityOff();
     auto actor1 = vtkSmartPointer<vtkOpenGLActor>::New();
     actor1->SetMapper(mapper1);
     actor1->GetProperty()->SetEdgeVisibility(1);
+    actor1->GetProperty()->SetColor(1,1,1);
+    actor1->GetProperty()->SetEdgeColor(0,0,0.5);
     auto Ren1 = vtkSmartPointer<vtkOpenGLRenderer>::New();
     Ren1->AddActor(actor1);
     Ren1->SetBackground(0.318,0.341,0.431);
@@ -31,9 +34,12 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent){
     poly2_0 = vtkSmartPointer<vtkPolyData>::New();
     poly2_0->DeepCopy(poly2);
     mapper2->SetInputData(poly2);
+    mapper2->ScalarVisibilityOff();
     auto actor = vtkSmartPointer<vtkOpenGLActor>::New();
     actor->SetMapper(mapper2);
     actor->GetProperty()->EdgeVisibilityOn();
+    actor->GetProperty()->SetColor(1,1,1);
+    actor->GetProperty()->SetEdgeColor(0,0,0.5);
     auto Ren2 = vtkSmartPointer<vtkOpenGLRenderer>::New();
     Ren2->AddActor(actor);
     Ren2->SetBackground(0.318,0.341,0.431);
